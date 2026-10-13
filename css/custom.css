@@ -1,70 +1,30 @@
 /* ============================================================
    YOUR STYLES
-
-   This file loads AFTER simple.css in the HTML, so anything you
-   write here wins. That order is called the cascade. If you put
-   this link above simple.css instead, none of it will work.
-
-   Simple.css already styles every HTML element. You are not
-   starting from nothing. You are adjusting something.
    ============================================================ */
 
-
-/* ------------------------------------------------------------
-   1. FONTS
-
-   The @import below pulls two typefaces from Google Fonts.
-   To change them:
-     1. go to fonts.google.com or fontshare.com
-     2. pick a font, copy the @import they give you
-     3. replace the line below
-     4. put the font's name in --sans-font or --heading-font
-
-   @import must be the first thing in the file. Always.
-   ------------------------------------------------------------ */
-
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&display=swap');
-
-
-/* ------------------------------------------------------------
-   2. VARIABLES
-
-   These names come from simple.css. Changing a value here
-   changes it everywhere on every page at once.
-
-   Change all of them. The point is that your site does not
-   look like the starter.
-   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400..500&family=Work+Sans:wght@400;500;600&display=swap');
 
 :root, ::backdrop {
 
   /* --- type --- */
-  --sans-font: 'Inter', system-ui, sans-serif;   /* body text */
-  --heading-font: 'Instrument Serif', Georgia, serif;  /* mine, not simple.css's */
+  --sans-font: 'Work Sans', system-ui, sans-serif;
+  --heading-font: 'Fraunces', Georgia, serif;
   --mono-font: ui-monospace, Menlo, Consolas, monospace;
 
   /* --- color --- */
-  --bg:          #FCFBF9;   /* page background */
-  --accent-bg:   #F1EFEA;   /* boxes, table headers, quote backgrounds */
-  --text:        #1B1B1D;   /* body text */
-  --text-light:  #63636B;   /* captions and secondary text */
-  --border:      #D7D4CC;   /* rules and outlines */
-  --accent:      #1F5C4A;   /* links */
-  --accent-hover:#2E8268;
-  --accent-text: var(--bg); /* text sitting on top of accent */
-  --code:        #9A2A5C;
-  --marked:      #F5E06B;   /* highlighter color for <mark> */
+  --bg:          #FAF6EF;   /* warm paper */
+  --accent-bg:   #EFE6D8;   /* boxes, nav, quote backgrounds */
+  --text:        #241F1A;
+  --text-light:  #85796A;
+  --border:      #D9CDB8;
+  --accent:      #B5502C;   /* terracotta */
+  --accent-hover:#8C3C21;
+  --accent-text: var(--bg);
+  --code:        #6B4226;
+  --marked:      #F3D17A;
 
-  --standard-border-radius: 3px;
+  --standard-border-radius: 2px;
 }
-
-
-/* ------------------------------------------------------------
-   3. ADJUSTMENTS
-
-   Simple.css does not have a heading font variable, so this
-   applies mine. Delete it if you only want one typeface.
-   ------------------------------------------------------------ */
 
 h1, h2, h3, h4 {
   font-family: var(--heading-font);
@@ -72,20 +32,102 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: 2.6rem; line-height: 1.1; }
+h1 { font-size: 3rem; line-height: 1.05; font-style: italic; }
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin-top: 3rem;
+}
 
-/* Dates and captions */
-time { color: var(--text-light); }
-
+time { color: var(--text-light); font-size: 0.9rem; }
 figcaption { font-size: 0.9rem; }
 
-/* Simple.css centers the header. This left-aligns it. */
-header { text-align: left; padding-bottom: 1.5rem; }
-header > nav { margin-top: 0.5rem; }
+header { text-align: left; padding-bottom: 1rem; border-bottom: 2px solid var(--text); }
+header > p { color: var(--text-light); font-size: 1.05rem; max-width: 40ch; }
 
+header > nav {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+header > nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--text);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--standard-border-radius);
+}
+
+header > nav a:hover,
+header > nav a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--accent-text);
+}
 
 /* ------------------------------------------------------------
    4. YOUR CSS
-
-   Write below here so you can always find your own work.
    ------------------------------------------------------------ */
+
+/* Intro / bio block on the homepage */
+.intro {
+  max-width: 62ch;
+  font-size: 1.1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.intro .tag {
+  display: inline-block;
+  font-family: var(--mono-font);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--standard-border-radius);
+  margin-right: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Log / work list as cards instead of plain <ul> */
+.entry-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.entry-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.entry-list li:first-child { padding-top: 0; }
+
+.entry-list a {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.entry-list a:hover { color: var(--accent); }
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
