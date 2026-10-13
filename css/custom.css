@@ -131,3 +131,51 @@ footer {
   color: var(--text-light);
   font-size: 0.85rem;
 }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: var(--standard-border-radius);
+  padding: 1.5rem;
+  background: var(--accent-bg);
+}
+
+.project-card.upcoming {
+  background: transparent;
+  border-style: dashed;
+  color: var(--text-light);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.project-card .status {
+  display: inline-block;
+  font-family: var(--mono-font);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.project-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.project-card a.view-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
